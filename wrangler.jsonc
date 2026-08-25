@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "scrummy",
+  "main": "worker/index.ts",
+  "compatibility_date": "2025-01-09",
+  "assets": {
+    // SPA fallback: unknown paths (e.g. /:roomSlug) serve index.html client-side.
+    "not_found_handling": "single-page-application",
+    // WebSockets, legacy URL redirects, and the /api/* Worker routes must hit the Worker
+    // before static assets.
+    "run_worker_first": ["/ws/*", "/api/*", "/privacy-policy", "/terms-of-service"]
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "ROOM", "class_name": "Room" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Room"] }
+  ]
+  // Once DNS is set up, add a custom domain route, e.g.:
+  // "routes": [{ "pattern": "scrummy.dev", "custom_domain": true }]
+}

@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-bg: #0a0d14;
+  --color-surface: #12151f;
+  --color-surface-raised: #1a1e2b;
+  --color-border: #262b3a;
+  --color-border-strong: #363c50;
+  --color-ink: #f1f2f6;
+  --color-ink-muted: #8b90a3;
+  --color-accent: #ec4899;
+  --color-accent-emphasis: #db2777;
+  --color-success: #34d399;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  color-scheme: dark;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+.story-point-gradient {
+  background-image: linear-gradient(90deg, var(--color-accent), #fb923c, var(--color-accent));
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: story-point-flow 3s ease infinite;
+}
+
+@keyframes story-point-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.headline-pop-enter-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.headline-pop-leave-active {
+  transition: opacity 0.15s ease;
+}
+.headline-pop-enter-from {
+  opacity: 0;
+  transform: scale(0.85) translateY(4px);
+}
+.headline-pop-leave-to {
+  opacity: 0;
+}
+
+.player-card-enter-active {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+.player-card-leave-active {
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  position: absolute;
+}
+.player-card-enter-from {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.player-card-leave-to {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.player-card-move {
+  transition: transform 0.25s ease;
+}
+
+.deck-rise-enter-active {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+}
+.deck-rise-enter-from {
+  opacity: 0;
+  transform: translateY(40px);
+}
+

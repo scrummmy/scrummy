@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0d14" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Estimate story points with your remote Scrum team in real time. Create a planning poker room, share the link, and vote—no accounts required."
+    />
+    <link rel="canonical" href="https://scrummy.dev/" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Scrummy" />
+    <meta property="og:url" content="https://scrummy.dev/" />
+    <meta property="og:title" content="Free Planning Poker for Scrum Teams | Scrummy" />
+    <meta
+      property="og:description"
+      content="Create a room, invite your team, and estimate story points together in real time—no accounts required."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Free Planning Poker for Scrum Teams | Scrummy" />
+    <meta
+      name="twitter:description"
+      content="Create a room, invite your team, and estimate story points together in real time—no accounts required."
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Scrummy",
+        "url": "https://scrummy.dev/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Free real-time planning poker and story point estimation for remote Scrum teams.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <title>Free Planning Poker for Scrum Teams | Scrummy</title>
+
+    <!--
+      Google Consent Mode v2 default: storage stays denied until the cookie banner records a
+      choice (see src/stores/consent.ts). Must run before gtag.js loads so GA never sets
+      identifiers ahead of consent. Page views are sent manually from the router
+      (send_page_view: false) since this is an SPA.
+
+      GA is entirely optional: without VITE_GA_MEASUREMENT_ID set at build time (see
+      .env.example), the %-placeholder below is left un-replaced by Vite, so gaId stays
+      un-configured and gtag.js never loads — dataLayer.push calls elsewhere just no-op.
+    -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+
+      var gaId = "%VITE_GA_MEASUREMENT_ID%";
+      if (gaId.indexOf("%") === -1 && gaId.length > 0) {
+        gtag("js", new Date());
+        gtag("config", gaId, { send_page_view: false });
+        var gaScript = document.createElement("script");
+        gaScript.async = true;
+        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
+        document.head.appendChild(gaScript);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
